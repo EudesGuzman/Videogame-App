@@ -71,7 +71,7 @@ const linksData = [
     title: 'Contacto',
     caption: 'Página de contacto',
     icon: 'contact_support',
-    link: '/#/info/contacto'
+    link: '/#/info/contact'
   },
   {
     title: 'Juegos',

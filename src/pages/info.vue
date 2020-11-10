@@ -1,13 +1,23 @@
 <template>
   <q-page class="q-pa-md">
-   <div class="row rowTitle">
-    <div class="col-12">
-     <h3>Información</h3>
+
+    <q-breadcrumbs>
+      <q-breadcrumbs-el icon="home" to="/" />
+      <q-breadcrumbs-el label="Informacion" icon="info" />
+    </q-breadcrumbs>
+
+    <div class="row rowTitle">
+        <div class="col-12">
+          <h3>Información</h3>
+        </div>
     </div>
-   </div>
-   <div class="row">
-    <p class="texto"> <span class="resaltadoFrase">Loresum dolor sit amet, consectetur adipiscing elit.</span> enean bibendum imperdiet ligula nec vehicula. Cras aliquet placerat tellus ac ultrices. In fermentum eget nisi non vehicula. Nulla vitae hendrerit erat. Suspendisse in vehicula arcu. Proin nisi ligula, posuere at diam nec, convallis porttitor mi. Donec tristique ex massa, sed euismod libero finibus eu. Nam congue justo eros, vel dignissim lectus bibendum id.</p>
-   </div>
+    <div class="row">
+        <div class="col-12">
+          <p class="texto-info">
+          Aplicación desarrollada en Vue.js. Mostramos los juegos de https://api.rawg.io/api/games con distintas opciones de filtrado.
+</p>
+        </div>
+    </div>
   </q-page>
 </template>
 

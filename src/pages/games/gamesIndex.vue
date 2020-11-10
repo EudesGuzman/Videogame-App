@@ -1,12 +1,30 @@
 <template>
   <q-page class="q-pa-md">
+
+    <q-breadcrumbs>
+      <q-breadcrumbs-el icon="home" to="/" />
+      <q-breadcrumbs-el label="Juegos" icon="games" />
+    </q-breadcrumbs>
+
     <div class="row rowTitle">
         <div class="col-12">
           <h3>Listado juegos</h3>
         </div>
     </div>
 
-    <gameListFilter @filtrar="buscar"/>
+    <q-expansion-item
+      class="shadow-1 overflow-hidden expansionItemMenu"
+      icon="search"
+      label="Filtros"
+      header-class="bg-primary text-white"
+      expand-icon-class="text-white"
+    >
+      <q-card>
+        <q-card-section>
+          <gameListFilter @filtrar="buscar"/>
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
 
     <div class="row" v-if="gamesList !== null">
       <div class="col-12" v-for="(game) in gamesList" :key="game.id">
@@ -39,16 +57,18 @@ export default {
       page: 1,
       visible: false,
       search: null,
-      genre: null
+      genre: null,
+      date: null
     }
   },
   created () {
     this.loadGames()
   },
   methods: {
-    async buscar (searchString, genreId) {
+    async buscar (searchString, genreId, dateString) {
       this.search = searchString
       this.genre = genreId
+      this.date = dateString
       this.page = 1
       this.gamesList = null
       this.loadGames()
@@ -69,6 +89,9 @@ export default {
       }
       if (this.genre !== null) {
         url += '&genres=' + this.genre
+      }
+      if (this.date !== null) {
+        url += '&dates=' + this.date
       }
       await this.$axios.get(url).then((response) => {
         // console.log(response.data)

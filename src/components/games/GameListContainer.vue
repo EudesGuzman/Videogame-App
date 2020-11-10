@@ -1,5 +1,5 @@
 <template>
-  <div class="gameListContainer">
+  <div class="gameListContainer" @click="viewGame">
     <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 imageListColumn">
               <img :src="game.background_image">
@@ -42,6 +42,11 @@ export default {
     game: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    viewGame () {
+      this.$router.push({ path: 'games/view/' + this.game.id, params: { id: this.game.id, gamepass: this.game } })
     }
   }
 }
